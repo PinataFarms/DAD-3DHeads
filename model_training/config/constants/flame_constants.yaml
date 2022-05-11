@@ -1,0 +1,11 @@
+# @package _global_
+
+constants:
+  shape: 300
+  expression: 100
+  jaw: 3
+  rotation: 6
+  eyeballs: 0
+  neck: 0
+  translation: 3
+  scale: 1

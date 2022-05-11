@@ -1,0 +1,22 @@
+# @package _global_
+phase: train
+task: 3D Head Mesh
+
+sampler: none
+drop_last: True
+min_epochs: 100
+max_epochs: 500
+early_stopping: 10
+batch_size: 64
+num_workers: 16
+save_top_k: 3
+images_log_freq: 100
+
+parallel: False
+
+best_worst_miner:
+  max_images: 16
+  metric_to_monitor: loss
+
+metric_to_monitor: valid/metrics/reproject_nme_2d
+metric_mode: min

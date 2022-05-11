@@ -1,0 +1,36 @@
+# @package _global_
+dataset_root: dataset
+
+train:
+    dataset_root: ${dataset_root}
+    ann_path: ${dataset_root}/DAD-3DHeadsDataset/train/train.json
+    img_size: 256
+    stride: 4
+    num_classes: 68
+    keypoints:
+      2d_subset_name: multipie_keypoints #keypoints_191 #keypoints_445
+      2d_subset_path: ./model_training/model/static/face_keypoints/${train.keypoints.2d_subset_name}
+    flame_indices:
+      folder: ./model_training/model/static/flame_indices
+      files:
+        head: head.npy
+        face_w_ears: face_w_ears.npy
+        face: face.npy
+    coder:
+      _target_: model_training.data.coder.HeatmapCoder
+    transform:
+      normalize: imagenet
+      resize_mode: longest_max_size
+
+val:
+    dataset_root: ${dataset_root}
+    ann_path: ${dataset_root}/DAD-3DHeadsDataset/val/val.json
+    img_size: ${train.img_size}
+    stride: ${train.stride}
+    num_classes: ${train.num_classes}
+    keypoints: ${train.keypoints}
+    flame_indices: ${train.flame_indices}
+    coder: ${train.coder}
+    transform:
+      normalize: imagenet
+      resize_mode: longest_max_size

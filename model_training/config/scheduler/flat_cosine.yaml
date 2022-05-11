@@ -1,0 +1,4 @@
+name: flat_cosine
+T_max: 120
+T_flat: 60
+eta_min: 1e-6

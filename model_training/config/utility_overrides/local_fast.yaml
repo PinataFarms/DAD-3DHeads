@@ -1,0 +1,8 @@
+# @package _global_
+min_epochs: 1
+max_epochs: 1
+sanity_steps: 0
+train_percent: 0.01
+val_percent: 0.05
+batch_size: 3
+num_workers: 1

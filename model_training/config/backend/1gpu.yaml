@@ -1,0 +1,5 @@
+# @package _global_
+num_workers: 1
+gpus: [ 0 ]
+accelerator:
+precision: 32

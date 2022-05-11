@@ -1,0 +1,15 @@
+mobilenet_w1:
+  block_size:
+    layer0: 1024
+    layer1: 512
+    layer2: 256
+    layer3: 128
+    layer4: 64
+
+resnet50:
+  block_size:
+    layer0: 2048
+    layer1: 1024
+    layer2: 512
+    layer3: 256
+    layer4: 64

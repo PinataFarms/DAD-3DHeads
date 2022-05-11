@@ -1,0 +1,5 @@
+name: plateau
+mode: min
+patience: 8
+factor: 0.5
+min_lr: 1e-6

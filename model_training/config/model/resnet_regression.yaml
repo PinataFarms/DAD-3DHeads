@@ -1,0 +1,10 @@
+_target_: model_training.model.flame_regression.FlameRegression
+model_config:
+  backbone: resnet50
+  pretrained: True
+  num_filters: 256
+  num_channels: 3
+  num_classes: ${train.num_classes}
+  img_size: ${train.img_size}
+  conv_block: regular
+  limit_value: 3
