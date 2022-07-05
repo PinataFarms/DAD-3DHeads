@@ -2,7 +2,7 @@ wheel==0.37.1
 hydra-core==1.1.0
 coloredlogs
 
-numpy==1.17.3
+numpy==1.22.0
 scikit-learn>=0.21.3
 chumpy==0.70
 
