@@ -8,7 +8,7 @@ chumpy==0.70
 
 torch==1.9.0
 torchvision==0.10.0
-pytorch-lightning==1.3.1
+pytorch-lightning==1.6.0
 torch_optimizer==0.1.0
 pytorchcv==0.0.65
 pytorch-toolbelt==0.5.0
