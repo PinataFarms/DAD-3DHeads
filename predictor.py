@@ -1,3 +1,4 @@
+import requests
 from typing import Dict, Any, Tuple, Union, List
 
 import os
@@ -7,7 +8,6 @@ from torch import Tensor
 import numpy as np
 
 import logging
-import urllib.request
 import albumentations as A
 from albumentations.augmentations.geometric import py3round
 
@@ -26,12 +26,43 @@ def model_exists() -> bool:
     return os.path.isfile(os.path.join(os.path.expanduser("~"), ".dad_checkpoints", _FILENAME))
 
 
-def download_model() -> None:
+def download_model(url: str, retries: int = 5, verify_ssl: bool = True) -> None:
+    """Download an given URL
+        Parameters:
+        ----------
+        url : str
+            URL to download
+        retries : integer, default 5
+            The number of times to attempt the download in case of failure or non 200 return codes
+        verify_ssl : bool, default True
+            Verify SSL certificates.
+        """
     os.makedirs(os.path.join(os.path.expanduser("~"), ".dad_checkpoints"), exist_ok=True)
-    urllib.request.urlretrieve(
-        _PUBLIC_URL,
-        os.path.join(os.path.expanduser("~"), ".dad_checkpoints", _FILENAME)
-    )
+    filename = os.path.join(os.path.expanduser("~"), ".dad_checkpoints", _FILENAME)
+    assert retries >= 0, "Number of retries should be at least 0"
+
+    if not verify_ssl:
+        logger.warning(
+            "Unverified HTTPS request is being made (verify_ssl=False). "
+            "Adding certificate verification is strongly advised.")
+
+    while retries + 1 > 0:
+        try:
+            logger.info("Downloading {} from {}...".format(filename, url))
+            r = requests.get(url, stream=True, verify=verify_ssl)
+            if r.status_code != 200:
+                raise RuntimeError("Failed downloading url {}".format(url))
+            with open(filename, "wb") as f:
+                for chunk in r.iter_content(chunk_size=1024):
+                    if chunk:  # filter out keep-alive new chunks
+                        f.write(chunk)
+            break
+        except Exception as e:
+            retries -= 1
+            if retries <= 0:
+                raise e
+            else:
+                logger.info("download failed, retrying, {} attempt{} left".format(retries, "s" if retries > 1 else ""))
 
 
 class FaceMeshPredictor:
@@ -176,6 +207,6 @@ class FaceMeshPredictor:
         config = load_yaml(get_relative_path("dad_3dnet.yaml", __file__))
         if not model_exists():
             logger.info("Downloading the model")
-            download_model()
+            download_model(_PUBLIC_URL)
         return FaceMeshPredictor(config=config)
 
