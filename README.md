@@ -11,7 +11,7 @@
 
 ![](./images/banner.png)
 
-This is an official repository for the paper 
+This is an official repository for the paper
 ```
 DAD-3DHeads: A Large-scale Dense, Accurate and Diverse Dataset for 3D Head Alignment from a Single Image
 Tetiana Martyniuk, Orest Kupyn, Yana Kurlyak, Igor Krashenyi, Jiři Matas, Viktoriia Sharmanska
@@ -20,7 +20,7 @@ CVPR 2022
 
 ## Installation
 
-The code uses **Python 3.6**.  
+The code uses **Python 3.8**.
 
 #### Create a Conda virtual environment:
 
@@ -106,7 +106,7 @@ python train.py
 ![](./images/demo_vis.png)
 
 First row (from left to right): input image, 68 2D face landmarks visualization, 191 2D face landmarks visualization, 445 2D face landmarks visualization.  
-Second row (from left to right): face mesh visualization, head mesh visualization, head pose visualization, 3D head mesh. 
+Second row (from left to right): face mesh visualization, head mesh visualization, head pose visualization, 3D head mesh.
 
 #### Run demo:
 ```bash
@@ -147,6 +147,8 @@ This work is licensed under a
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+
+By using this code, you acknowledge that you have read the license terms, understand them, and agree to be bound by them. If you do not agree with these terms and conditions, you must not use the code.
 
 ## Citation
 
