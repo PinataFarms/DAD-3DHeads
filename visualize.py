@@ -22,13 +22,17 @@ def get_2d_keypoints(data: Dict[str, List], img_height: int) -> np.ndarray:
     return np.stack((flame_vertices2d[:, 0], (img_height - flame_vertices2d[:, 1])), -1).astype(int)
 
 
-def visualize(
-        subset: str,
-        id: str,
-        base_path: str = 'dataset',
-        outputs_folder: str = "outputs"
-) -> None:
+def visualize(subset: str, id: str, base_path: str = 'dataset', outputs_folder: str = "outputs") -> None:
+    """
+    Visualizes the 3D vertices (GT annotations) over the 2D image from the dataset.
 
+    Args:
+        subset: 'train', 'val', or 'test'
+        id: unique id (filename) of the data point
+        base_path: path to the 'DAD-3DHeadsDataset' folder
+        outputs_folder: folder to write the outputs to
+
+    """
     os.makedirs(outputs_folder, exist_ok=True)
     json_path = os.path.join(base_path, 'DAD-3DHeadsDataset', subset, 'annotations', id + '.json')
     img_path = json_path.replace('annotations', 'images').replace('json', 'png')
