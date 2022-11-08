@@ -46,7 +46,7 @@ DAD-3DHeads Benchmark consists of 4 metrics:
 
    To compare the matrices $R_{pred}$ and $R_{GT}$, we calculate the difference rotation $R_{pred} R_{GT}^T$ , and measure Frobenius norm of the matrix $I − R_{pred} R_{GT}^T$.
 
-   **To have this metric evaluated, the submission has to contain a $3x3$ rotation matrix.**
+   **To have this metric evaluated, the submission has to contain a $3\times3$ rotation matrix.**
 
 
 For more details, see the [DAD-3DHeads paper](https://arxiv.org/abs/2204.03688).
@@ -102,14 +102,7 @@ To evaluate on DAD-3DHeads validation set,
 
 
 Note that GT annotations are only provided for the validation set. **In order to evaluate your model on DAD-3DHeads test set, please submit the test set predictions to the following e-mails (please cc all of them):**.
-* t.martynyuk@ucu.edu.ua
-* orest@pinatafarm.com
-* tetyanka.martynyuk@gmail.com
-* orestkupyn@gmail.com
-* research@pinatafarm.com
-
-
-This is requested so that the project is supported by the main contributors regardless of any conflicting circumstances, e.g., change of affiliation.
+* dad3dheads@gmail.com
 
 ## License
 
