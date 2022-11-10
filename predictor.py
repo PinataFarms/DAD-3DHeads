@@ -133,7 +133,7 @@ class FaceMeshPredictor:
             landmarks = self.readjust_landmarks_to_the_input_image(landmarks, paddings, scale)
 
             pred_3dmm = self.readjust_3dmm_to_the_input_image(pred_3dmm, paddings, scale)
-            vertices_3d = self.head_mesh.vertices_3d(pred_3dmm, zero_rotation=True)[0].squeeze()
+            vertices_3d = self.head_mesh.vertices_3d(pred_3dmm)[0].squeeze()
             projected_vertices = self.head_mesh.reprojected_vertices(params_3dmm=pred_3dmm, to_2d=True)
 
             return {"points": landmarks,
