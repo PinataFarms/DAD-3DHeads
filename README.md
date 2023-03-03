@@ -25,7 +25,7 @@ The code uses **Python 3.8**.
 #### Create a Conda virtual environment:
 
 ```bash
-conda create --name DAD-3DHeads python=3.6
+conda create --name DAD-3DHeads python=3.8
 conda activate DAD-3DHeads
 ```
 #### Clone the project and install requirements:
