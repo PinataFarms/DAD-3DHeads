@@ -8,6 +8,7 @@ import json
 from model_training.model.flame import calculate_rpy, FlameParams, FLAME_CONSTS
 from model_training.utils import load_indices_from_npy
 from inference.uv_texture import UVTextureCreator
+from inference.pncc_estimator import PNCCEstimator
 from utils import get_relative_path
 
 # region visualization
@@ -96,6 +97,11 @@ def draw_pose(predictions: Dict[str, torch.Tensor], image: np.ndarray) -> np.nda
 def get_uv_texture(predictions: Dict[str, torch.Tensor], image: np.ndarray) -> np.ndarray:
     texture_predictor = UVTextureCreator()
     return texture_predictor(image, predictions)
+
+
+def get_pncc(predictions: Dict[str, torch.Tensor], image: np.ndarray) -> np.ndarray:
+    pncc_predictor = PNCCEstimator()
+    return pncc_predictor(image, predictions)
 
 # endregion
 
