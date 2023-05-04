@@ -10,6 +10,7 @@ from demo_utils import (
     draw_3d_landmarks,
     draw_mesh,
     draw_pose,
+    get_uv_texture,
     get_mesh,
     get_flame_params,
     get_output_path,
@@ -30,6 +31,7 @@ demo_funcs = {
     "head_mesh": DemoFuncs(partial(draw_mesh, subset="head"), ImageSaver),
     "face_mesh": DemoFuncs(partial(draw_mesh, subset="face"), ImageSaver),
     "pose": DemoFuncs(draw_pose, ImageSaver),
+    "uv_texture": DemoFuncs(get_uv_texture, ImageSaver),
     "3d_mesh": DemoFuncs(get_mesh, MeshSaver),
     "flame_params": DemoFuncs(get_flame_params, JsonSaver)
 }
