@@ -6,9 +6,6 @@ import json
 import cv2
 from smplx.lbs import find_dynamic_lmk_idx_and_bcoords
 from smplx.utils import Struct
-from typing import Dict, Any
-import yaml
-
 
 ROT_COEFFS = 3
 JAW_COEFFS = 3
@@ -26,10 +23,6 @@ def read_img(path: str) -> np.ndarray:
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     return img
 
-def load_yaml(x: str) -> Dict[str, Any]:
-    with open(x) as fd:
-        config = yaml.load(fd, yaml.FullLoader)
-        return config
 
 # region 68 landmarks
 
@@ -121,7 +114,8 @@ def get_68_landmarks(
     dynamic_lmks = get_dynamic_lmks(mesh_vertices, mesh_faces)
     return torch.cat((dynamic_lmks, static_lmks), 0)
 
-#endregion
+
+# endregion
 
 # region Chamfer distance
 
@@ -312,5 +306,77 @@ def procrustes(X, Y, scaling=True, reflection="best"):
 def get_relative_path(x: str, rel_to: str) -> str:
     return os.path.join(os.path.dirname(rel_to), x)
 
+
 def get_flame_indices(name: str = "head_indices") -> np.ndarray:
     return np.load(get_relative_path(f"../model_training/model/static/{name}.npy", __file__))
+
+
+def print_evaluation_results(overall_result, attribute_result):
+    """Pretty print evaluation results with formatting"""
+
+    print("\n" + "=" * 60)
+    print(" OVERALL RESULTS ".center(60, "="))
+    print("=" * 60)
+
+    for metric, value in overall_result.items():
+        display_name = metric.replace("_", " ").title()
+        print(f"  {display_name:<25} {value:>10.6f}")
+
+    print("\n" + "=" * 60)
+    print(" ATTRIBUTE-WISE RESULTS ".center(60, "="))
+    print("=" * 60)
+
+    for metric_name, attributes in attribute_result.items():
+        if not attributes:
+            continue
+
+        display_metric = metric_name.replace("_", " ").title()
+        print(f"\n{display_metric}")
+        print("-" * len(display_metric))
+
+        for attr_name, attr_values in attributes.items():
+            display_attr = attr_name.replace("_", " ").title()
+            print(f"\n  {display_attr}:")
+
+            sorted_values = sorted(attr_values.items(), key=lambda x: str(x[0]))
+
+            for value_name, mean_score in sorted_values:
+                value_display = str(value_name)
+                if len(value_display) > 20:
+                    value_display = value_display[:17] + "..."
+                print(f"    {value_display:<20} {mean_score:>10.6f}")
+
+    print("\n" + "=" * 60)
+
+
+def print_evaluation_summary(overall_result, attribute_result):
+    """Print a compact summary of results"""
+
+    print("\n" + "=" * 60)
+    print(" EVALUATION SUMMARY ".center(60, "="))
+    print("=" * 60)
+
+    print("\nOverall Metrics:")
+    print("-" * 40)
+    print(f"{'Metric':<20} {'Score':>10}")
+    print("-" * 40)
+
+    for metric, value in overall_result.items():
+        short_name = metric.replace("nme_reprojection", "NME 2D")
+        short_name = short_name.replace("z5_accuracy", "Z5 Acc")
+        short_name = short_name.replace("chamfer", "Chamfer")
+        short_name = short_name.replace("pose_error", "Pose Error")
+        print(f"{short_name:<20} {value:>10.6f}")
+
+    # Attribute summary: count of categories per attribute
+    if attribute_result:
+        print("\n\nAttribute Categories Evaluated:")
+        print("-" * 40)
+
+        first_metric = next(iter(attribute_result.values()))
+        for attr_name in first_metric.keys():
+            num_categories = len(first_metric[attr_name])
+            display_attr = attr_name.replace("_", " ").title()
+            print(f"  • {display_attr}: {num_categories} categories")
+
+    print("\n" + "=" * 60)
