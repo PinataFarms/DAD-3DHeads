@@ -5,6 +5,7 @@
 [![Paper](https://img.shields.io/badge/arXiv-2204.03688-brightgreen)](https://arxiv.org/abs/2204.03688)
 [![Conference](https://img.shields.io/badge/CVPR-2022-blue)](https://cvpr2022.thecvf.com)
 [![Project WebPage](https://img.shields.io/badge/Project-webpage-%23fc4d5d)](https://www.pinatafarm.com/research/dad-3dheads/)
+[![Dataset](https://img.shields.io/badge/Hugging_Face-dataset-fed91b)](https://huggingface.co/datasets/t-martyniuk/DAD-3DHeadsDataset)
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
 </div>
@@ -17,6 +18,14 @@ DAD-3DHeads: A Large-scale Dense, Accurate and Diverse Dataset for 3D Head Align
 Tetiana Martyniuk, Orest Kupyn, Yana Kurlyak, Igor Krashenyi, Jiři Matas, Viktoriia Sharmanska
 CVPR 2022
 ```
+
+## 📰 News
+
+- **2026-01-23** - [DAD-3DHeads dataset](https://huggingface.co/datasets/t-martyniuk/DAD-3DHeadsDataset) is now available on Hugging Face.
+- **2024-08-27** - Added UV Texture predictor and PNCC estimator.
+- **2022-11-08** - [DAD-3DHeads benchmark](https://github.com/PinataFarms/DAD-3DHeads/tree/main/dad_3dheads_benchmark) evaluation code is released.
+- **2022-05-11** - Initial code release.
+
 
 ## Installation
 
@@ -40,7 +49,7 @@ pip install -r requirements.txt
 
 #### Prepare the DAD-3DHeads dataset:
 
-First, you need to download the [DAD-3DHeads](https://www.pinatafarm.com/research/dad-3dheads/dataset) dataset and extract it to the `dataset/DAD-3DHeadsDataset` directory. The dataset is available upon request. Please [fill in this form](https://docs.google.com/forms/d/e/1FAIpQLSdo8RPxtFR1xHBJ7gkNHbEse0eYOsHR739b9zZ4BtGWQv49LQ/viewform) to get access to it.
+First, you need to download the [DAD-3DHeads dataset](https://huggingface.co/datasets/t-martyniuk/DAD-3DHeadsDataset) and extract it to the `dataset/DAD-3DHeadsDataset` directory. 
 
 The dataset directory structure should be the following:
 ```
@@ -152,7 +161,7 @@ By using this code, you acknowledge that you have read the license terms, unders
 
 ## Citation
 
-If you use the DAD-3DHeads Dataset and/or this code - implicitly or explicitly - for your research projects, please cite the following paper:
+If you use the DAD-3DHeads dataset or this code for your research projects, please cite the following paper:
 
 ```
 @inproceedings{dad3dheads,
