@@ -11,7 +11,7 @@ DAD-3DHeads is a novel benchmark with the evaluation protocol for quantitative a
 - [Installation](#installation)
 - [Evaluation](#evaluation)
 - [License](#license)
-- [Citing](#citing)
+- [Citation](#citation)
 
 ## Evaluation metrics
 
@@ -137,7 +137,7 @@ This work is licensed under a
 By using this code, you acknowledge that you have read the license terms, understand them, and agree to be bound by them.   
 If you do not agree with these terms and conditions, you must not use the code.
 
-## Citing
+## Citation
 
 The codebase for DAD-3DHeads Benchmark belongs to the [DAD-3DHeads project](https://github.com/PinataFarms/DAD-3DHeads/).  
 If you use the DAD-3DHeads Benchnmark code or its evaluation results for your research projects, please cite the following paper:
