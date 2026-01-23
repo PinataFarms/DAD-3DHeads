@@ -5,6 +5,14 @@ This is the official repository for [DAD-3DHeads Benchmark](https://www.pinatafa
 
 DAD-3DHeads is a novel benchmark with the evaluation protocol for quantitative assessment of 3D dense head fitting, i.e. 3D Head Estimation from dense annotations.
 
+## 📚 Table of Contents
+
+- [Evaluation metrics](#evaluation-metrics)
+- [Installation](#installation)
+- [Evaluation](#evaluation)
+- [License](#license)
+- [Citing](#citing)
+
 ## Evaluation metrics
 
 Given a single monocular image, the aim is to densely align 3D head to it.  
@@ -37,7 +45,7 @@ DAD-3DHeads Benchmark consists of 4 metrics:
    **To have this metric evaluated, the submission has to contain 7 aforementioned 3D landmarks** (see the image below, and go to [NoW Benchmark](https://github.com/soubhiksanyal/now_evaluation) for more details).  
    It is required for rigid alignment between the predicted mesh and the GT mesh.
    <p align="center">   
-   <img src="images/landmarks_7_annotated.png">  
+   <img src="images/landmarks_7_annotated.png" width="420">  
    </p> 
 
 
