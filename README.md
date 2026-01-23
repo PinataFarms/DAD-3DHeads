@@ -161,7 +161,7 @@ By using this code, you acknowledge that you have read the license terms, unders
 
 ## Citation
 
-If you use the DAD-3DHeads Dataset or this code for your research projects, please cite the following paper:
+If you use the DAD-3DHeads dataset or this code for your research projects, please cite the following paper:
 
 ```
 @inproceedings{dad3dheads,
