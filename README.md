@@ -26,6 +26,14 @@ CVPR 2022
 - **2022-11-08** - [DAD-3DHeads benchmark](https://github.com/PinataFarms/DAD-3DHeads/tree/main/dad_3dheads_benchmark) evaluation code is released.
 - **2022-05-11** - Initial code release.
 
+## 📚 Table of Contents
+
+- [Installation](#installation)
+- [Training](#training)
+- [Demo](#demo)
+- [DAD-3DHeads Benchmark](#dad-3dheads-benchmark)
+- [License](#license)
+- [Citation](#citation)
 
 ## Installation
 
@@ -145,6 +153,10 @@ python demo.py images/demo_heads/1.jpeg outputs 3d_mesh
 # Get flame parameters .json file
 python demo.py images/demo_heads/1.jpeg outputs flame_params
 ```
+
+## DAD-3DHeads Benchmark
+
+Please refer to the `dad_3dheads_benchmark` directory for the evaluation protocol.
 
 ## License
 
