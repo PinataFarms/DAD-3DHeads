@@ -8,7 +8,7 @@ DAD-3DHeads is a novel benchmark with the evaluation protocol for quantitative a
 ## Evaluation metrics
 
 Given a single monocular image, the aim is to densely align 3D head to it.  
-The goodness-of-fit of the *predicted mesh* to the *pseudo ground-truth one* (from here on - *GT mesh*) provided in [DAD-3DHeads dataset](https://www.pinatafarm.com/research/dad-3dheads/dataset) measures the pose fitting, and both face and head shape matching.
+The goodness-of-fit of the *predicted mesh* to the *pseudo ground-truth one* (from here on - *GT mesh*) provided in [DAD-3DHeads dataset](https://huggingface.co/datasets/t-martyniuk/DAD-3DHeadsDataset) measures the pose fitting, and both face and head shape matching.
 
 DAD-3DHeads Benchmark consists of 4 metrics:
 1) **Reprojection NME**: normalized mean error of the reprojected 3D vertices onto the image plane, taking X and Y coordinates into account.   
@@ -73,7 +73,7 @@ Please check this [webpage](https://kaolin.readthedocs.io/en/latest/notes/instal
 
 ## Evaluation
 
-Download the DAD-3DHeads dataset from the [DAD-3DHeads project webpage](https://www.pinatafarm.com/research/dad-3dheads/dataset), and predict 3D faces for all validation/test images.
+Download the [DAD-3DHeads dataset](https://huggingface.co/datasets/t-martyniuk/DAD-3DHeadsDataset) from the Hugging Face, and predict 3D faces for all validation/test images.
 
 Your submission should be a ```.json``` file with the following contents:
 ```  
@@ -94,16 +94,26 @@ Each prediction itself is also a dict with the keys (or subset of these keys): `
 Please be careful with following this particular file format, and the way to arrange your predictions.
 Please see the `data/sample_submission.json` for the reference.
 
-To evaluate on DAD-3DHeads validation set,
-* generate GT `.json` for validation set:
-    * run `python generate_gt.py <base_path>`
+To evaluate on DAD-3DHeads validation/test set,
+* generate GT `.json` for the corresponding set:
+    * run `python generate_gt.py <base_path> <subset_name> <with_attributes>`
     * `<base_path>` is the path to the folder where you store `DAD-3DHeadsDataset`
-* run `python benchmark.py <your_submission_path>`.
+    * `<subset_name>` is either `val` or `test`
+    * `<with_attributes>` is an option supported only for the `test` set
+* run `python benchmark.py <your_submission_path> <generated_GT_path>`.
 
+### 📌 Test Set Annotations Update
 
-Note that GT annotations are only provided for the validation set. **In order to evaluate your model on DAD-3DHeads test set, please submit the test set predictions to the following e-mails (please cc all of them):**.
-* dad3dheads@gmail.com
+As of **2026-01-23**, ground-truth annotations are provided for both the **validation** and **test** sets.  
+You can now evaluate your models on the DAD-3DHeads test set locally, without submitting results to our team.
 
+⚠️ **Important note on fair evaluation:**  
+Since test annotations are publicly available, we strongly encourage using the test set **only for final evaluation** and not for model development, ablations, or hyperparameter tuning, in order to avoid test-set leakage and overly optimistic results.
+
+You can contact us if you have any questions or need further information (please cc all of the following):
+
+- dad3dheads@gmail.com  
+- t.martynyuk@ucu.edu.ua
 
 ## License
 
@@ -121,8 +131,8 @@ If you do not agree with these terms and conditions, you must not use the code.
 
 ## Citing
 
-The codebase for DAD-3DHeads Benchmark belongs to the [DAD-3DHeads project](https://www.pinatafarm.com/research/dad-3dheads/).  
-If you use the DAD-3DHeads Benchnmark code and/or its evaluation results - implicitly or explicitly - for your research projects, please cite the following paper:
+The codebase for DAD-3DHeads Benchmark belongs to the [DAD-3DHeads project](https://github.com/PinataFarms/DAD-3DHeads/).  
+If you use the DAD-3DHeads Benchnmark code or its evaluation results for your research projects, please cite the following paper:
 
 ```  
 @inproceedings{dad3dheads,  
